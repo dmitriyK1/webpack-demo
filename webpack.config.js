@@ -5,8 +5,8 @@ const merge = require('webpack-merge');
 const parts = require('./webpack.parts');
 
 const PATHS = {
-    app: path.join(__dirname, 'app'),
-    build: path.join(__dirname, 'build')
+  app: path.join(__dirname, 'app'),
+  build: path.join(__dirname, 'build')
 };
 
 const commonConfig = merge([
@@ -19,24 +19,25 @@ const commonConfig = merge([
       filename: "[name].js",
     },
     plugins: [
-      new HtmlWebpackPlugin({ title: "Webpack demo" }),
+      new HtmlWebpackPlugin({title: "Webpack demo"}),
     ],
   },
+  parts.loadCSS(),
 ]);
 
 const productionConfig = merge([]);
 
 const developmentConfig = merge([
-    parts.devServer({
-        host: process.env.HOST,
-        port: process.env.PORT,
-    })
+  parts.devServer({
+    host: process.env.HOST,
+    port: process.env.PORT,
+  })
 ]);
 
 module.exports = (env) => {
-    if (env === 'production') {
-        return merge(commonConfig, productionConfig);
-    }
+  if (env === 'production') {
+    return merge(commonConfig, productionConfig);
+  }
 
-    return merge(commonConfig, developmentConfig);
+  return merge(commonConfig, developmentConfig);
 };
