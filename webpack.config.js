@@ -6,7 +6,7 @@ const PATHS = {
     build: path.join(__dirname, 'build'),
 };
 
-module.exports = {
+const commonConfig = {
     entry: {
         app: PATHS.app,
     },
@@ -17,4 +17,30 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({ title: 'Webpack Demo' }),
     ],
+};
+
+const productionConfig = () => commonConfig;
+
+const developmentConfig = () => {
+    const config = {
+        devServer: {
+            stats: 'errors-only',
+            host: process.env.HOST,
+            port: process.env.PORT,
+            overlay: {
+                errors: true,
+                warnings: true,
+            },
+        },
+    };
+
+    return Object.assign({}, commonConfig, config);
+};
+
+module.exports = (env) => {
+    if (env === 'production') {
+        return productionConfig();
+    }
+
+    return developmentConfig();
 };
