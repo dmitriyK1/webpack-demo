@@ -3,7 +3,7 @@ const PurifyCSSPlugin = require('purifycss-webpack');
 
 exports.devServer = ({host, port} = {}) => ({
   devServer: {
-    stats: "errors-only",
+    stats: 'errors-only',
     host, // Defaults to `localhost`
     port, // Defaults to 8080
     overlay: {
@@ -21,7 +21,7 @@ exports.loadCSS = ({include, exclude} = {}) => ({
         include,
         exclude,
 
-        use: ["style-loader", "css-loader"],
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.(scss|sass)$/,
