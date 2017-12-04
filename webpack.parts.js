@@ -77,3 +77,13 @@ exports.autoprefix = () => ({
 exports.purifyCSS = ({paths}) => ({
   plugins: [new PurifyCSSPlugin({paths})],
 });
+
+exports.lintJavaScript = () => ({
+  module: {
+    rules: [{
+      test: /\.jsx?/,
+      enforce: 'pre',
+      use: 'eslint-loader',
+    }],
+  },
+});

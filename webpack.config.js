@@ -40,6 +40,7 @@ const developmentConfig = merge([
     port: process.env.PORT,
   }),
   parts.loadCSS(),
+  parts.lintJavaScript(),
 ]);
 
 module.exports = (env) => {
