@@ -7,7 +7,7 @@ const parts = require('./webpack.parts');
 
 const PATHS = {
   app: path.join(__dirname, 'app'),
-  build: path.join(__dirname, 'build')
+  build: path.join(__dirname, 'build'),
 };
 
 const commonConfig = merge([
@@ -20,17 +20,23 @@ const commonConfig = merge([
       filename: '[name].js',
     },
     plugins: [
-      new HtmlWebpackPlugin({title: 'Webpack demo'}),
+      new HtmlWebpackPlugin({ title: 'Webpack demo' }),
     ],
   },
 ]);
 
 const productionConfig = merge([
   parts.extractCSS({
-    use: ['css-loader', parts.autoprefix()]
+    use: ['css-loader', parts.autoprefix()],
   }),
   parts.purifyCSS({
-    paths: glob.sync(`${PATHS.app}/**/*.js`, {nodir: true}),
+    paths: glob.sync(`${PATHS.app}/**/*.js`, { nodir: true }),
+  }),
+  parts.loadImages({
+    options: {
+      limit: 15000,
+      name: '[name].[ext]',
+    },
   }),
 ]);
 
@@ -41,6 +47,7 @@ const developmentConfig = merge([
   }),
   parts.loadCSS(),
   parts.lintJavaScript(),
+  parts.loadImages(),
 ]);
 
 module.exports = (env) => {

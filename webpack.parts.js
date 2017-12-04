@@ -1,7 +1,7 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const PurifyCSSPlugin = require('purifycss-webpack');
 
-exports.devServer = ({host, port} = {}) => ({
+exports.devServer = ({ host, port } = {}) => ({
   devServer: {
     stats: 'errors-only',
     host, // Defaults to `localhost`
@@ -13,7 +13,7 @@ exports.devServer = ({host, port} = {}) => ({
   },
 });
 
-exports.loadCSS = ({include, exclude} = {}) => ({
+exports.loadCSS = ({ include, exclude } = {}) => ({
   module: {
     rules: [
       {
@@ -30,16 +30,16 @@ exports.loadCSS = ({include, exclude} = {}) => ({
           {
             loader: 'fast-sass-loader',
             options: {
-              includePaths: ['./app']
-            }
-          }
-        ]
+              includePaths: ['./app'],
+            },
+          },
+        ],
       },
     ],
   },
 });
 
-exports.extractCSS = ({include, exclude, use}) => {
+exports.extractCSS = ({ include, exclude, use }) => {
   // Output extracted CSS to a file
   const plugin = new ExtractTextPlugin({
     // `allChunks` is needed with CommonsChunkPlugin to extract
@@ -74,8 +74,8 @@ exports.autoprefix = () => ({
   },
 });
 
-exports.purifyCSS = ({paths}) => ({
-  plugins: [new PurifyCSSPlugin({paths})],
+exports.purifyCSS = ({ paths }) => ({
+  plugins: [new PurifyCSSPlugin({ paths })],
 });
 
 exports.lintJavaScript = () => ({
@@ -85,5 +85,21 @@ exports.lintJavaScript = () => ({
       enforce: 'pre',
       use: 'eslint-loader',
     }],
+  },
+});
+
+exports.loadImages = ({ include, exclude, options } = {}) => ({
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpg|svg)$/,
+        include,
+        exclude,
+        use: {
+          loader: 'url-loader',
+          options,
+        },
+      },
+    ],
   },
 });
