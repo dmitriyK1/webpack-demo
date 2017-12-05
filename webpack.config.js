@@ -57,6 +57,8 @@ const developmentConfig = merge([
 ]);
 
 module.exports = (env) => {
+  process.env.BABEL_ENV = env;
+
   if (env === 'production') {
     return merge(commonConfig, productionConfig);
   }
