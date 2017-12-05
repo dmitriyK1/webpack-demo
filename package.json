@@ -14,6 +14,7 @@
   "devDependencies": {
     "autoprefixer": "7.2.0",
     "babel-eslint": "8.0.3",
+    "babel-plugin-transform-react-jsx-img-import": "0.1.4",
     "css-loader": "0.28.7",
     "eslint": "4.12.1",
     "eslint-config-airbnb": "16.1.0",
