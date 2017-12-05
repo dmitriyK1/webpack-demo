@@ -120,3 +120,16 @@ exports.loadFonts = ({ include, exclude, options } = {}) => ({
     ],
   },
 });
+
+exports.loadJavaScript = ({ include, exclude } = {}) => ({
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        include,
+        exclude,
+        use: 'babel-loader',
+      },
+    ],
+  },
+});

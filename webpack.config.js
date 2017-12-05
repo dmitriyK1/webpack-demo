@@ -28,6 +28,7 @@ const commonConfig = merge([
       name: '[name].[ext]',
     },
   }),
+  parts.loadJavaScript({ include: PATHS.app }),
 ]);
 
 const productionConfig = merge([
