@@ -57,6 +57,7 @@ const developmentConfig = merge([
 ]);
 
 module.exports = (env) => {
+  // to allow choosing babel plugins for each target (development/production)
   process.env.BABEL_ENV = env;
 
   if (env === 'production') {
