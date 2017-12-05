@@ -23,6 +23,11 @@ const commonConfig = merge([
       new HtmlWebpackPlugin({ title: 'Webpack demo' }),
     ],
   },
+  parts.loadFonts({
+    options: {
+      name: '[name].[ext]',
+    },
+  }),
 ]);
 
 const productionConfig = merge([
