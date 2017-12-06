@@ -57,8 +57,7 @@ const developmentConfig = merge([
   parts.loadImages(),
   {
     output: {
-      devtoolModuleFilenameTemplate:
-        'webpack:///[absolute-resource-path]',
+      devtoolModuleFilenameTemplate: 'webpack:///[absolute-resource-path]',
     },
   },
   parts.generateSourceMaps({
