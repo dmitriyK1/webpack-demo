@@ -44,6 +44,7 @@ const productionConfig = merge([
       name: '[name].[ext]',
     },
   }),
+  parts.generateSourceMaps({ type: 'source-map' }),
 ]);
 
 const developmentConfig = merge([
@@ -54,6 +55,15 @@ const developmentConfig = merge([
   parts.loadCSS(),
   parts.lintJavaScript(),
   parts.loadImages(),
+  {
+    output: {
+      devtoolModuleFilenameTemplate:
+        'webpack:///[absolute-resource-path]',
+    },
+  },
+  parts.generateSourceMaps({
+    type: 'cheap-module-eval-source-map',
+  }),
 ]);
 
 module.exports = (env) => {
