@@ -1,5 +1,4 @@
 {
-  "plugins": ["transform-react-jsx-img-import"],
   "presets": [
     [
       "env",
