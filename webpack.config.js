@@ -51,6 +51,7 @@ const productionConfig = merge([
       minChunks: ({ resource }) => /node_modules/.test(resource),
     },
   ]),
+  parts.clean(PATHS.build),
 ]);
 
 const developmentConfig = merge([
