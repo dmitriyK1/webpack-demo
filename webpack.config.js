@@ -45,6 +45,12 @@ const productionConfig = merge([
     },
   }),
   parts.generateSourceMaps({ type: 'source-map' }),
+  parts.extractBundles([
+    {
+      name: 'vendor',
+      minChunks: ({ resource }) => /node_modules/.test(resource),
+    },
+  ]),
 ]);
 
 const developmentConfig = merge([
