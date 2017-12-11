@@ -18,6 +18,7 @@ const commonConfig = merge([
     output: {
       path: PATHS.build,
       filename: '[name].js',
+      chunkFilename: '[name].js',
     },
     plugins: [
       new HtmlWebpackPlugin({ title: 'Webpack demo' }),
