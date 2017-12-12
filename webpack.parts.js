@@ -5,6 +5,8 @@ const PurifyCSSPlugin = require('purifycss-webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const GitRevisionPlugin = require('git-revision-webpack-plugin');
 const UglifyWebpackPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const cssnano = require('cssnano');
 
 exports.devServer = ({ host, port } = {}) => ({
   devServer: {
@@ -161,4 +163,14 @@ exports.attachRevision = () => ({
 
 exports.minifyJavaScript = () => ({
   plugins: [new UglifyWebpackPlugin()],
+});
+
+exports.minifyCSS = ({ options }) => ({
+  plugins: [
+    new OptimizeCSSAssetsPlugin({
+      cssProcessor: cssnano,
+      cssProcessorOptions: options,
+      canPrint: false,
+    }),
+  ],
 });

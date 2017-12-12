@@ -62,6 +62,16 @@ const productionConfig = merge([
   parts.clean(PATHS.build),
   parts.attachRevision(),
   parts.minifyJavaScript(),
+  parts.minifyCSS({
+    options: {
+      discardComments: {
+        removeAll: true,
+      },
+      // Run cssnano in safe mode to avoid
+      // potentially unsafe transformations.
+      safe: true,
+    },
+  }),
 ]);
 
 const developmentConfig = merge([
