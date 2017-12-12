@@ -72,6 +72,7 @@ const productionConfig = merge([
       safe: true,
     },
   }),
+  parts.setFreeVariable('process.env.NODE_ENV', 'production'),
 ]);
 
 const developmentConfig = merge([
