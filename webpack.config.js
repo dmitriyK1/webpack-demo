@@ -33,6 +33,13 @@ const commonConfig = merge([
 ]);
 
 const productionConfig = merge([
+  {
+    performance: {
+      hints: 'warning', // "error" or false are valid too
+      maxEntrypointSize: 50000, // in bytes, default 250k
+      maxAssetSize: 450000, // in bytes
+    },
+  },
   parts.extractCSS({
     use: ['css-loader', parts.autoprefix()],
   }),
@@ -54,6 +61,7 @@ const productionConfig = merge([
   ]),
   parts.clean(PATHS.build),
   parts.attachRevision(),
+  parts.minifyJavaScript(),
 ]);
 
 const developmentConfig = merge([
