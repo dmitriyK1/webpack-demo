@@ -45,6 +45,7 @@ const productionConfig = merge([
       chunkFilename: '[name].[chunkhash].js',
       filename: '[name].[chunkhash].js',
     },
+    recordsPath: path.join(__dirname, 'records.json'),
   },
   parts.extractCSS({
     use: ['css-loader', parts.autoprefix()],
