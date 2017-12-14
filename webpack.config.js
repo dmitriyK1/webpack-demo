@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge');
 const glob = require('glob');
+const webpack = require('webpack');
 
 const parts = require('./webpack.parts');
 
@@ -22,6 +23,7 @@ const commonConfig = merge([
     },
     plugins: [
       new HtmlWebpackPlugin({ title: 'Webpack demo' }),
+      new webpack.NamedModulesPlugin(),
     ],
   },
   parts.loadFonts({
