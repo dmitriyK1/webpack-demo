@@ -26,7 +26,7 @@ const commonConfig = merge([
   },
   parts.loadFonts({
     options: {
-      name: '[name].[ext]',
+      name: '[name].[hash].[ext]',
     },
   }),
   parts.loadJavaScript({ include: PATHS.app }),
@@ -39,6 +39,10 @@ const productionConfig = merge([
       maxEntrypointSize: 50000, // in bytes, default 250k
       maxAssetSize: 450000, // in bytes
     },
+    output: {
+      chunkFilename: '[name].[chunkhash].js',
+      filename: '[name].[chunkhash].js',
+    },
   },
   parts.extractCSS({
     use: ['css-loader', parts.autoprefix()],
@@ -49,7 +53,7 @@ const productionConfig = merge([
   parts.loadImages({
     options: {
       limit: 15000,
-      name: '[name].[ext]',
+      name: '[name].[hash].[ext]',
     },
   }),
   parts.generateSourceMaps({ type: 'source-map' }),
