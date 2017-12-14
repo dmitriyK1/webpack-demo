@@ -64,6 +64,10 @@ const productionConfig = merge([
       name: 'vendor',
       minChunks: ({ resource }) => /node_modules/.test(resource),
     },
+    {
+      name: 'manifest',
+      minChunks: Infinity, // tells webpack not to move any modules to the resulting bundle
+    },
   ]),
   parts.clean(PATHS.build),
   parts.attachRevision(),
