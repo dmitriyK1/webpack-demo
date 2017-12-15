@@ -3,3 +3,4 @@ package-lock.json
 *.swp
 .idea
 build
+.DS_Store
