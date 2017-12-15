@@ -4,3 +4,5 @@ package-lock.json
 .idea
 build
 .DS_Store
+stats.json
+records.json
