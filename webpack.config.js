@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge');
 const glob = require('glob');
 const webpack = require('webpack');
+const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
 
 const parts = require('./webpack.parts');
 
@@ -24,6 +25,7 @@ const commonConfig = merge([
     plugins: [
       new HtmlWebpackPlugin({ title: 'Webpack demo' }),
       new webpack.NamedModulesPlugin(),
+      new DuplicatePackageCheckerPlugin(),
     ],
   },
   parts.loadFonts({
