@@ -4,6 +4,7 @@ const merge = require('webpack-merge');
 const glob = require('glob');
 const webpack = require('webpack');
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
+const HappyPack = require('happypack');
 
 const parts = require('./webpack.parts');
 
@@ -26,6 +27,12 @@ const commonConfig = merge([
       new HtmlWebpackPlugin({ title: 'Webpack demo' }),
       new webpack.NamedModulesPlugin(),
       new DuplicatePackageCheckerPlugin(),
+      new HappyPack({
+        loaders: [
+          // Capture Babel loader
+          'babel-loader',
+        ],
+      }),
     ],
   },
   parts.loadFonts({
