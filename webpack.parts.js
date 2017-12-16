@@ -183,3 +183,17 @@ exports.setFreeVariable = (key, value) => {
     plugins: [new webpack.DefinePlugin(env)],
   };
 };
+
+exports.dontParse = ({ name, path }) => {
+  const alias = {};
+  alias[name] = path;
+
+  return {
+    module: {
+      noParse: [new RegExp(path)],
+    },
+    resolve: {
+      alias,
+    },
+  };
+};

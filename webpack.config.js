@@ -111,6 +111,10 @@ const developmentConfig = merge([
   parts.generateSourceMaps({
     type: 'cheap-module-eval-source-map',
   }),
+  parts.dontParse({
+    name: 'react',
+    path: path.resolve(__dirname, 'node_modules/react/umd/react.production.min.js'),
+  }),
 ]);
 
 module.exports = (env) => {
