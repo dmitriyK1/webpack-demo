@@ -1,1 +1,1 @@
-alert('hello from test.js!');
+alert('hello from test.js!'); // eslint-disable-line
