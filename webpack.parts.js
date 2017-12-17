@@ -162,7 +162,12 @@ exports.attachRevision = () => ({
 });
 
 exports.minifyJavaScript = () => ({
-  plugins: [new UglifyWebpackPlugin({ sourceMap: true })],
+  plugins: [
+    new UglifyWebpackPlugin({
+      sourceMap: true,
+      parallel: true,
+    }),
+  ],
 });
 
 exports.minifyCSS = ({ options }) => ({
