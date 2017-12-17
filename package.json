@@ -51,6 +51,7 @@
   },
   "dependencies": {
     "font-awesome": "4.7.0",
+    "hard-source-webpack-plugin": "0.5.7",
     "purecss": "1.0.0",
     "react": "16.2.0"
   }

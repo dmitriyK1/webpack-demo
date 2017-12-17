@@ -5,6 +5,7 @@ const glob = require('glob');
 const webpack = require('webpack');
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
 const HappyPack = require('happypack');
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 
 const parts = require('./webpack.parts');
 
@@ -96,6 +97,9 @@ const productionConfig = merge([
 ]);
 
 const developmentConfig = merge([
+  {
+    plugins: [new HardSourceWebpackPlugin()],
+  },
   parts.devServer({
     host: process.env.HOST,
     port: process.env.PORT,
