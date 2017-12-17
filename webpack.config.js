@@ -34,6 +34,7 @@ const commonConfig = merge([
           'babel-loader',
         ],
       }),
+      new HardSourceWebpackPlugin(),
     ],
   },
   parts.loadFonts({
@@ -97,9 +98,6 @@ const productionConfig = merge([
 ]);
 
 const developmentConfig = merge([
-  {
-    plugins: [new HardSourceWebpackPlugin()],
-  },
   parts.devServer({
     host: process.env.HOST,
     port: process.env.PORT,
