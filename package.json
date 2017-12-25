@@ -6,6 +6,7 @@
   "scripts": {
     "start": "nodemon --watch webpack.config.js --exec \"webpack-dev-server --env development\"",
     "build": "webpack --env production",
+    "build:ssr": "webpack --config webpack.ssr.js",
     "build:stats": "webpack --env production --json > stats.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,6 +20,8 @@
     "babel-loader": "7.1.2",
     "babel-plugin-syntax-dynamic-import": "6.18.0",
     "babel-preset-env": "1.6.1",
+    "babel-preset-react": "6.24.1",
+    "browser-refresh": "1.7.2",
     "clean-webpack-plugin": "0.1.17",
     "css-loader": "0.28.7",
     "cssnano": "3.10.0",
@@ -29,6 +32,7 @@
     "eslint-plugin-import": "2.8.0",
     "eslint-plugin-jsx-a11y": "6.0.2",
     "eslint-plugin-react": "7.5.1",
+    "express": "4.16.2",
     "extract-text-webpack-plugin": "3.0.2",
     "fast-sass-loader": "1.4.0",
     "file-loader": "1.1.5",
@@ -53,6 +57,7 @@
     "font-awesome": "4.7.0",
     "hard-source-webpack-plugin": "0.5.7",
     "purecss": "1.0.0",
-    "react": "16.2.0"
+    "react": "16.2.0",
+    "react-dom": "16.2.0"
   }
 }
